@@ -1,0 +1,25 @@
+---
+staticAssetsPath: "./public/"
+staticAssetsPrefix: "/public/"
+pageTitle: "Oops!"
+title: "We'll be back shortly!"
+body: "We are sorry for the inconvenience."
+author:
+  enabled: true
+  name: "example.org"
+  url: "example.org"
+image:
+  enabled: true
+  url: "public/asset.svg"
+contact: 
+  enabled: true 
+  body: You can always reach us at <a href="mailto:hello@example.org">hello@example.org</a>
+theme:
+  textColor: "#2f2e41"
+  color: "#fff"
+  darkTheme:
+    enabled: true
+customCode:
+  enabled: false
+  html: ""
+  css: ""
