@@ -1,4 +1,4 @@
-FROM golang:1.16 AS builder
+FROM golang:1.16-buster AS builder
 
 WORKDIR /app
 
@@ -23,4 +23,4 @@ COPY tmpl ./tmpl
 
 EXPOSE 8080
 
-CMD [ "/server" ]
+ENTRYPOINT [ "/server" ]

@@ -113,6 +113,12 @@ property in case your image you'd like to serve your static assets from another 
 The dedicated mount point for a configmap file is `/etc/default-backend/config.yaml`. Do NOT mount into `/`,
 as the default configmap is located there and you MUST NOT replace it, as it serves as the kernel for the configuration.
 
+## Running the containers
+
+As already mentioned, the default Dockerfile builds a distroless container, i.e., it has no shell you can access to perform
+any other operation than running the application. If you need a shell for whatever reason, e.g., patch something
+or plainly experiment, have a look at the `debug` tag: <https://github.com/zoomoid/default-backend/pkgs/container/default-backend%2Fdebug>. It builds an alpine linux image that has a shell ready to go!
+
 ## Usage with docker-compose
 
 This is very straight-forward, just override the environment variables above from the docker-compose.yaml
