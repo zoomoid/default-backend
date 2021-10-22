@@ -31,12 +31,12 @@ or using Docker
 $ docker build .
 ```
 
-which will produce a minimal, distroless image (<https://github.com/GoogleContainerTools/distroless>).
+which will produce a small, handy, and easy to secure, distroless image (<https://github.com/GoogleContainerTools/distroless>).
 
 If you need a shell, build the alpine image using
 
 ```
-$ docker build ./Dockerfile.dev
+$ docker build ./Dockerfile.debug
 ```
 
 ## Templating custom values
