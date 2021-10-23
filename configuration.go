@@ -23,14 +23,14 @@ type Contact struct {
 }
 
 type Image struct {
-	Enabled bool   `yaml:"enabled"`
-	URL     string `yaml:"url"`
+	Enabled bool         `yaml:"enabled"`
+	URL     template.URL `yaml:"url"`
 }
 
 type Author struct {
-	Enabled bool   `yaml:"enabled"`
-	Name    string `yaml:"name"`
-	URL     string `yaml:"url"`
+	Enabled bool         `yaml:"enabled"`
+	Name    string       `yaml:"name"`
+	URL     template.URL `yaml:"url"`
 }
 
 type CustomCode struct {
