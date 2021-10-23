@@ -44,17 +44,32 @@ func main() {
 	// Load up viper for configuration
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
-	viper.AddConfigPath("/etc/default-backend/")
+
 	viper.AddConfigPath("/")
 	viper.AddConfigPath(".")
 
+	if err := viper.ReadInConfig(); err != nil {
+		logger.Fatal("Failed to load system-defined configuration!", zap.Error(err))
+	}
+	logger.Info("Loaded system-defined configuration", zap.Any("config", viper.AllSettings()))
+
+	// user-specified configmap from a volume mount to /etc/default-backend
+	v := viper.New()
+	v.SetConfigName("config")
+	v.SetConfigType("yaml")
+	v.AddConfigPath("/etc/default-backend/")
+	if err := v.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			logger.Info("No user-defined configuration found in /etc/default-backend, skipping...")
+		} else {
+			logger.Fatal("Failed to load user-defined configmap")
+		}
+	}
+
 	BindEnvVariables()
 
-	if err := viper.ReadInConfig(); err != nil {
-		logger.Fatal("Failed to load configuration!", zap.Error(err))
-	}
-	logger.Info("Loaded configuration", zap.Any("config", viper.AllSettings()))
-
+	viper.MergeConfigMap(v.AllSettings())
+	logger.Info("Merged system-defined and user-defined configmaps", zap.Any("config", viper.AllSettings()))
 	// fill in context for template rendering
 	config = MakeTemplateContext()
 	logger.Info("Created template context", zap.Any("context", config))
