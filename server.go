@@ -24,6 +24,7 @@ func probeHandler(w http.ResponseWriter, r *http.Request) {
 // rootHandler templates the HTML with the provided configuration
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	logger.Info("rootHandler", zap.String("path", r.URL.Path))
+	w.WriteHeader(config.StatusCode)
 	renderTemplate(w, "index", config)
 }
 

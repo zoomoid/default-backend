@@ -48,6 +48,7 @@ type DefaultBackendConfiguration struct {
 	Image      *Image        `yaml:"image"`
 	Theme      *Theme        `yaml:"theme"`
 	CustomCode *CustomCode   `yaml:"customCode"`
+	StatusCode int           `yaml:"statusCode"`
 }
 
 // MakeTemplateContext unmarshals the viper configmap into the struct above
@@ -84,4 +85,5 @@ func BindEnvVariables() {
 	viper.BindEnv("customCode.enabled", "CUSTOM_CODE")
 	viper.BindEnv("customCode.css", "CUSTOM_CSS")
 	viper.BindEnv("customCode.html", "CUSTOM_HTML")
+	viper.BindEnv("statusCode", "STATUS_CODE")
 }

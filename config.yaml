@@ -1,6 +1,7 @@
 ---
 staticAssetsPath: "./public/"
 staticAssetsPrefix: "/public/"
+statusCode: 404
 pageTitle: "Oops!"
 title: "We'll be back shortly!"
 body: "We are sorry for the inconvenience."

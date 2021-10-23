@@ -13,6 +13,8 @@ and even has a built-in, preference-detecting dark mode:
 
 It uses CSS's `@media (prefers-color-scheme: dark)` to switch between light and dark!
 
+It also responds with an HTTP 404 on the root URL, making it a hard-fail backend instead of a soft-failure semantic 404 served with an HTTP 200 status code. This behaviour is up to preference though, it can be changed, see the section below.
+
 ## Building
 
 This is just your regular Golang app:
@@ -71,6 +73,8 @@ BACKGROUND_COLOR="#fff"
 CUSTOM_CODE=false
 CUSTOM_HTML=""
 CUSTOM_CSS=""
+
+STATUS_CODE=404
 ```
 
 but you can also do this by YAML, which is arguably a lot nicer looking:
