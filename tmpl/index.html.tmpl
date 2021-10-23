@@ -84,9 +84,11 @@
           {{ .Contact.Body }}.
         </p>
         {{ end }}
+        {{ if .Author.Enabled }}
         <p>
-          &mdash; {{ .Author }}
+          &mdash; <a href="{{ .Author.URL }}">{{ .Author.Name }}</a>
         </p>
+        {{ end }}
       </div>
     </main>
     {{ end }}

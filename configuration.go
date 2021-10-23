@@ -1,6 +1,8 @@
 package main
 
 import (
+	"html/template"
+
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
 )
@@ -16,8 +18,8 @@ type Theme struct {
 }
 
 type Contact struct {
-	Enabled bool   `yaml:"enabled"`
-	Body    string `yaml:"body"`
+	Enabled bool          `yaml:"enabled"`
+	Body    template.HTML `yaml:"body"`
 }
 
 type Image struct {
@@ -32,20 +34,20 @@ type Author struct {
 }
 
 type CustomCode struct {
-	Enabled bool   `yaml:"enabled"`
-	CSS     string `yaml:"css"`
-	HTML    string `yaml:"html"`
+	Enabled bool          `yaml:"enabled"`
+	CSS     template.CSS  `yaml:"css"`
+	HTML    template.HTML `yaml:"html"`
 }
 
 type DefaultBackendConfiguration struct {
-	PageTitle  string      `yaml:"pageTitle"`
-	Title      string      `yaml:"title"`
-	Body       string      `yaml:"body"`
-	Author     *Author     `yaml:"author"`
-	Contact    *Contact    `yaml:"contact"`
-	Image      *Image      `yaml:"image"`
-	Theme      *Theme      `yaml:"theme"`
-	CustomCode *CustomCode `yaml:"customCode"`
+	PageTitle  string        `yaml:"pageTitle"`
+	Title      string        `yaml:"title"`
+	Body       template.HTML `yaml:"body"`
+	Author     *Author       `yaml:"author"`
+	Contact    *Contact      `yaml:"contact"`
+	Image      *Image        `yaml:"image"`
+	Theme      *Theme        `yaml:"theme"`
+	CustomCode *CustomCode   `yaml:"customCode"`
 }
 
 // MakeTemplateContext unmarshals the viper configmap into the struct above
